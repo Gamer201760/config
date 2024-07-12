@@ -1,5 +1,13 @@
-require('mason').setup()
-require('mason-lspconfig').setup()
+require('mason').setup {}
+require('mason-lspconfig').setup {
+    ensure_installed = {
+        "lua_ls",
+        "pyright",
+        "ruff",
+        "clangd",
+        "gopls"
+    },
+}
 
 
 -- See: https://github.com/neovim/nvim-lspconfig/tree/54eb2a070a4f389b1be0f98070f81d23e2b1a715#suggested-configuration
@@ -32,6 +40,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
+
 require('mason-lspconfig').setup_handlers {
     function(server_name) -- default handler (optional)
         if server_name == 'ruff' or server_name == 'ruff_lsp' or server_name == 'pyright' then
