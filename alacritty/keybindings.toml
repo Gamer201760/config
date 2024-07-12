@@ -1,0 +1,6 @@
+[keyboard]
+bindings = [
+  { key = "N", mods = "Command|Shift", action = "CreateNewTab" },
+  { key = "Tab", mods = "Option", action = "SelectNextTab" },
+  { key = "Q", mods = "Option", action = "Quit" },
+]
