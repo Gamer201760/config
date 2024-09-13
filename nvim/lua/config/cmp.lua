@@ -15,30 +15,51 @@ cmp.setup({
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
     },
-    mapping = {
-        ['<C-Space>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true,
-        },
-
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Подтвердить с выбором
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_next_item()
+                cmp.select_next_item() -- Переключение к следующему предложению
             else
-                fallback()
+                fallback()             -- Обычное поведение Tab
             end
         end, { 'i', 's' }),
-
-        ['<C-Tab>'] = function(fallback)
-            if not cmp.select_prev_item() then
-                if vim.bo.buftype ~= 'prompt' and has_words_before() then
-                    cmp.complete()
-                else
-                    fallback()
-                end
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item() -- Переключение к предыдущему предложению
+            else
+                fallback()             -- Обычное поведение Shift-Tab
             end
-        end,
-    },
+        end, { 'i', 's' }),
+    }),
+    -- mapping = {
+    --     ['<C-Space>'] = cmp.mapping.confirm {
+    --         behavior = cmp.ConfirmBehavior.Insert,
+    --         select = true,
+    --     },
+    --
+    --     ['<Tab>'] = cmp.mapping(function(fallback)
+    --         if cmp.visible() then
+    --             cmp.select_next_item()
+    --         else
+    --             fallback()
+    --         end
+    --     end, { 'i', 's' }),
+    --
+    --     ['<C-Tab>'] = function(fallback)
+    --         if not cmp.select_prev_item() then
+    --             if vim.bo.buftype ~= 'prompt' and has_words_before() then
+    --                 cmp.complete()
+    --             else
+    --                 fallback()
+    --             end
+    --         end
+    --     end,
+    -- },
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         -- { name = 'vsnip' }, -- For vsnip users.
