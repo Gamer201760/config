@@ -59,6 +59,9 @@ require('conform').setup({
             'ruff_fix',
             'ruff_format',
         },
+        cpp = {
+            'clangd'
+        },
     },
     format_on_save = {
         timeout_ms = 500,
