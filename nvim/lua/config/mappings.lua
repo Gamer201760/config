@@ -12,7 +12,7 @@ vim.keymap.set({ 'n' }, '<Leader>w', '<cmd>w<cr>', opts)
 vim.keymap.set({ 'n' }, '<Leader>q', '<cmd>q<cr>', opts)
 
 -- features
-vim.keymap.set({ 'n' }, '<Leader>j', '<cmd>Neotree float<cr>', opts)
+-- vim.keymap.set({ 'n' }, '<Leader>j', '<cmd>Tfm<cr>', opts)
 vim.keymap.set({ 'n' }, "<Leader>'", '<cmd>TSJToggle<cr>', opts)
 
 -- comment string

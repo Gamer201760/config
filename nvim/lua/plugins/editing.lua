@@ -8,5 +8,14 @@ return {
     { 'mg979/vim-visual-multi' },
     { 'mfussenegger/nvim-dap' },
     { "rcarriga/nvim-dap-ui",             dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-    { 'mfussenegger/nvim-dap-python' }
+    { 'mfussenegger/nvim-dap-python' },
+    {
+        "rolv-apneseth/tfm.nvim",
+        config = function()
+            vim.keymap.set({ 'n' }, '<Leader>j', '', {
+                noremap = true,
+                callback = require("tfm").open,
+            })
+        end,
+    }
 }
