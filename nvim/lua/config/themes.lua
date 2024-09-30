@@ -68,5 +68,6 @@ require("catppuccin").setup({
         },
     },
 })
+require("gruvbox").setup()
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "gruvbox"
