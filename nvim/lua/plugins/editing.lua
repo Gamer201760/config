@@ -17,5 +17,6 @@ return {
                 callback = require("tfm").open,
             })
         end,
-    }
+    },
+    { "julianolf/nvim-dap-lldb" }
 }

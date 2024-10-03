@@ -5,7 +5,7 @@ vim.g.maplocalleader = "\\"
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set('i', 'jj', '<esc>', opts)
+-- vim.keymap.set('i', 'jj', '<esc>', opts)
 
 -- save & exit
 vim.keymap.set({ 'n' }, '<Leader>w', '<cmd>w<cr>', opts)
