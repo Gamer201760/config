@@ -27,3 +27,7 @@ vim.keymap.set({ 'n' }, "<Leader>d", '<cmd>Telescope diagnostics<cr>', opts)
 vim.keymap.set({ 'n', 'i', 'v' }, "<M-Tab>", '<cmd>bnext<cr>', opts)
 vim.keymap.set({ 'n', 'i', 'v' }, "<M-p>", '<cmd>bprevious<cr>', opts)
 vim.keymap.set({ 'n', 'i', 'v' }, "<M-q>", '<cmd>bd<cr>', opts)
+
+-- C++ complile
+vim.keymap.set({ 'n' }, "<Leader>cp", '<cmd>!g++ -Wall % && ./a.out<cr>', opts)
+vim.keymap.set({ 'n' }, "<Leader>cd", '<cmd>!g++ -g -Wall %<cr>', opts)
