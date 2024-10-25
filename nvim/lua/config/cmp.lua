@@ -8,7 +8,7 @@ cmp.setup({
             -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
             -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
             -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-            -- vim.snippet.epand(args.body) -- For native neovim snippets (Neovim v0.10+)
+            vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
         end,
     },
     window = {
