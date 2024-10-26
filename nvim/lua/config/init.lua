@@ -1,3 +1,4 @@
+require("config.template")
 require("config.mappings")
 require("config.lazy")
 require("config.lsp")
