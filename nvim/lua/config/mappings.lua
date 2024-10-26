@@ -29,5 +29,5 @@ vim.keymap.set({ 'n', 'i', 'v' }, "<M-p>", '<cmd>bprevious<cr>', opts)
 vim.keymap.set({ 'n', 'i', 'v' }, "<M-q>", '<cmd>bd<cr>', opts)
 
 -- C++ complile
-vim.keymap.set({ 'n' }, "<Leader>cp", '<cmd>!g++ -Wall % && ./a.out<cr>', opts)
-vim.keymap.set({ 'n' }, "<Leader>cd", '<cmd>!g++ -g -Wall %<cr>', opts)
+vim.keymap.set({ 'n' }, "<Leader>cp", '<cmd>!g++ -std=gnu++20 -Wall % && ./a.out<cr>', opts)
+vim.keymap.set({ 'n' }, "<Leader>cd", '<cmd>!g++ -std=gnu++20 -g -Wall %<cr>', opts)
