@@ -18,5 +18,6 @@ return {
             })
         end,
     },
-    { "julianolf/nvim-dap-lldb" }
+    { "julianolf/nvim-dap-lldb" },
+    { "github/copilot.vim" }
 }
