@@ -19,7 +19,7 @@ cmp.setup({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-e'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Подтвердить с выбором
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -28,13 +28,13 @@ cmp.setup({
                 fallback()             -- Обычное поведение Tab
             end
         end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item() -- Переключение к предыдущему предложению
-            else
-                fallback()             -- Обычное поведение Shift-Tab
-            end
-        end, { 'i', 's' }),
+        -- ['<S-Tab>'] = cmp.mapping(function(fallback)
+        --     if cmp.visible() then
+        --         cmp.select_prev_item() -- Переключение к предыдущему предложению
+        --     else
+        --         fallback()             -- Обычное поведение Shift-Tab
+        --     end
+        -- end, { 'i', 's' }),
     }),
     -- mapping = {
     --     ['<C-Space>'] = cmp.mapping.confirm {

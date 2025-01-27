@@ -45,6 +45,7 @@ return {
             "xml",
             "yaml",
             "arduino",
+            "go",
         },
         incremental_selection = {
             enable = true,

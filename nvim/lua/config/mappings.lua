@@ -19,8 +19,7 @@ vim.keymap.set({ 'n' }, "<Leader>'", '<cmd>TSJToggle<cr>', opts)
 vim.keymap.set({ 'n', 'v' }, "<Leader>/", '<cmd>normal gcc<cr>', opts)
 
 -- Telescope fast nav in project
-vim.keymap.set({ 'n' }, "<Leader>f", '<cmd>Telescope lsp_document_symbols<cr>', opts)
-vim.keymap.set({ 'n' }, "<Leader>F", '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', opts)
+vim.keymap.set({ 'n' }, "<Leader>f", '<cmd>Telescope find_files<cr>', opts)
 vim.keymap.set({ 'n' }, "<Leader>d", '<cmd>Telescope diagnostics<cr>', opts)
 
 -- Buffer nav
@@ -36,3 +35,11 @@ vim.keymap.set({ 'n' }, "<Leader>cd", '<cmd>!g++ -D_GLIBCXX_DEBUG -std=gnu++20 -
 -- C++ Template
 vim.keymap.set({ 'n' }, "<Leader>-=",
     ":lua Insert_template_from_file('/Users/gglamer/.config/nvim/templates/algs.cpp')<CR>", opts)
+
+
+
+vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true

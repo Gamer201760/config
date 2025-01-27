@@ -19,5 +19,5 @@ return {
         end,
     },
     { "julianolf/nvim-dap-lldb" },
-    { "github/copilot.vim" }
+    { "github/copilot.vim",     enabled = false }
 }
