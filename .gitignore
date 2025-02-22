@@ -1,3 +1,7 @@
-Autodesk
-lvim
-.DS_Store
+*
+!tmux
+!nvim
+!gitui
+!yazi
+!gitui
+!alacritty
