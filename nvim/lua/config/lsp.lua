@@ -43,7 +43,7 @@ local lspconfig = require('lspconfig')
 
 require('mason-lspconfig').setup_handlers {
     function(server_name) -- default handler (optional)
-        if server_name == 'ruff' or server_name == 'ruff_lsp' or server_name == 'pyright' then
+        if server_name == 'ruff' or server_name == 'ruff_lsp' or server_name == 'pyright' or server_name == 'clangd' then
             do return end
         end
         lspconfig[server_name].setup {
@@ -159,3 +159,6 @@ lspconfig.pyright.setup {
 }
 
 lspconfig.ruff.setup {}
+lspconfig.clangd.setup {
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
+}
