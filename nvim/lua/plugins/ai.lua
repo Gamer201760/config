@@ -7,37 +7,11 @@ return {
         -- uncomment the following line to load hub lazily
         --cmd = "MCPHub",  -- lazy load
         build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
-        -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
-        -- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
-        config = function()
-            require("mcphub").setup()
-        end,
     },
     {
         "yetone/avante.nvim",
         event = "VeryLazy",
         version = false, -- Never set this value to "*"! Never!
-        opts = {
-            -- add any opts here
-            -- for example
-            provider = "ollama",
-            ollama = {
-                endpoint = "http://192.168.1.209:11434", -- Note that there is no /v1 at the end.
-                model = "GandalfBaum/llama3.2-claude3.7",
-            },
-            disabled_tools = {
-                "list_files",
-                "search_files",
-                "read_file",
-                "create_file",
-                "rename_file",
-                "delete_file",
-                "create_dir",
-                "rename_dir",
-                "delete_dir",
-                "bash",
-            },
-        },
         -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
         build = "make",
         -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
