@@ -12,7 +12,9 @@ vim.keymap.set({ 'n' }, '<Leader>w', '<cmd>w<cr>', opts)
 vim.keymap.set({ 'n' }, '<Leader>q', '<cmd>q<cr>', opts)
 
 -- features
--- vim.keymap.set({ 'n' }, '<Leader>j', '<cmd>Tfm<cr>', opts)
+-- File manager
+vim.keymap.set({ 'n' }, '<Leader>j', '<cmd>Neotree float<cr>', opts)
+
 vim.keymap.set({ 'n' }, "<Leader>'", '<cmd>TSJToggle<cr>', opts)
 
 -- comment string
@@ -39,8 +41,8 @@ vim.keymap.set({ 'n' }, "<Leader>-=",
 
 
 
-vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<CR>")', {
-    expr = true,
-    replace_keycodes = false
-})
-vim.g.copilot_no_tab_map = true
+-- vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<CR>")', {
+--     expr = true,
+--     replace_keycodes = false
+-- })
+-- vim.g.copilot_no_tab_map = true

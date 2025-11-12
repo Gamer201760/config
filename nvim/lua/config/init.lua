@@ -1,7 +1,7 @@
 require("config.template")
 require("config.mappings")
 require("config.lazy")
-require("config.lsp")
+-- require("config.lsp")
 require("config.cmp")
 require("config.defaults")
 require("config.themes")

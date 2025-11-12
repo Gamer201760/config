@@ -10,14 +10,14 @@ return {
     { "rcarriga/nvim-dap-ui",             dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
     { 'mfussenegger/nvim-dap-python' },
     {
-        "rolv-apneseth/tfm.nvim",
-        config = function()
-            vim.keymap.set({ 'n' }, '<Leader>j', '', {
-                noremap = true,
-                callback = require("tfm").open,
-            })
-        end,
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-tree/nvim-web-devicons", -- optional, but recommended
+        },
+        lazy = false,                      -- neo-tree will lazily load itself
     },
     { "julianolf/nvim-dap-lldb" },
-    { "github/copilot.vim",     enabled = false }
 }
