@@ -1,20 +1,15 @@
 return {
     { 'echasnovski/mini.nvim',          version = false },
-    { "mason-org/mason.nvim",           opts = {} },                                                  -- базовая настройка Mason [web:6]
-    { "mason-org/mason-lspconfig.nvim", opts = {},      dependencies = { "neovim/nvim-lspconfig" } }, -- авто-enable серверов [web:6]
-    { "neovim/nvim-lspconfig" },                                                                      -- базовый LSP клиент [web:6]
+    { "mason-org/mason.nvim",           opts = {} },
+    { "mason-org/mason-lspconfig.nvim", opts = {},      dependencies = { "neovim/nvim-lspconfig" } },
+    { "neovim/nvim-lspconfig" },
 
     {
-        "ms-jpq/coq_nvim",
-        branch = "coq",
-        init = function()
-            vim.g.coq_settings = {
-                auto_start = "shut-up", -- if you want to start COQ at startup
-                -- Your COQ settings here
-            }
-        end,
-    }, -- основной плагин [web:1]
-    { "ms-jpq/coq.artifacts",        branch = "artifacts" },
+        'saghen/blink.cmp',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+        version = '1.*',
+        opts_extend = { "sources.default" }
+    },
     { 'mg979/vim-visual-multi' },
     { 'mfussenegger/nvim-dap' },
     { "rcarriga/nvim-dap-ui",        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
