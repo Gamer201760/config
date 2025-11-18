@@ -1,2 +1,6 @@
 undodir
 !lua
+!config
+!conform.lua
+!coq.lua
+!lsp_beautiful_hover.lua
