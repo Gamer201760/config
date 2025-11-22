@@ -1,102 +1,95 @@
-local cmp = require 'cmp'
+require("mason").setup({})
 
-cmp.setup({
-    snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-            vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
-        end,
-    },
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Подтвердить с выбором
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item() -- Переключение к следующему предложению
-            else
-                fallback()             -- Обычное поведение Tab
-            end
-        end, { 'i', 's' }),
-        -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-        --     if cmp.visible() then
-        --         cmp.select_prev_item() -- Переключение к предыдущему предложению
-        --     else
-        --         fallback()             -- Обычное поведение Shift-Tab
-        --     end
-        -- end, { 'i', 's' }),
-    }),
-    -- mapping = {
-    --     ['<C-Space>'] = cmp.mapping.confirm {
-    --         behavior = cmp.ConfirmBehavior.Insert,
-    --         select = true,
-    --     },
-    --
-    --     ['<Tab>'] = cmp.mapping(function(fallback)
-    --         if cmp.visible() then
-    --             cmp.select_next_item()
-    --         else
-    --             fallback()
-    --         end
-    --     end, { 'i', 's' }),
-    --
-    --     ['<C-Tab>'] = function(fallback)
-    --         if not cmp.select_prev_item() then
-    --             if vim.bo.buftype ~= 'prompt' and has_words_before() then
-    --                 cmp.complete()
-    --             else
-    --                 fallback()
-    --             end
-    --         end
-    --     end,
-    -- },
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
-        -- { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
-    }, {
-        { name = 'buffer' },
-    })
+require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls", "gopls", "rust_analyzer", "pyright", "ts_ls", "ruff" },
+    automatic_enable = true,
 })
 
--- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
--- Set configuration for specific filetype.
---[[ cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'git' },
-    }, {
-      { name = 'buffer' },
-    })
- })
- require("cmp_git").setup() ]] --
 
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
+local blink = require("blink.cmp")
+
+blink.setup({
+    keymap = {
+        preset = "none", -- отключить дефолтные бинды
+
+        ["<C-Space>"] = { 'show', 'show_documentation', 'hide_documentation' },
+
+        ["<C-e>"] = { "hide", 'fallback' },
+
+        ["<CR>"] = { "accept", 'fallback' },
+        ["<M-e>"] = { "cancel", 'fallback' },
+
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<Up>"] = { "select_prev", "fallback" },
+    },
+    appearance = {
+        nerd_font_variant = 'mono'
+    },
+    completion = {
+        documentation = { auto_show = true },
+        menu = {
+            draw = {
+                columns = { { "kind_icon", "label", gap = 1 }, { "label_description", "kind" } },
+                treesitter = { 'lsp' }
+            },
+        },
+    },
     sources = {
-        { name = 'buffer' }
-    }
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
+    fuzzy = { implementation = "prefer_rust_with_warning" }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = 'path' }
---   }, {
---     { name = 'cmdline' }
---   }),
---   matching = { disallow_symbol_nonprefix_matching = false }
--- }
+
+local hover_opts = {
+    border = "rounded",                                     -- стиль рамки[web:5]
+    max_width = math.floor(vim.o.columns * 0.45),           -- ширина не более ~45% экрана[web:7]
+    max_height = math.floor(vim.o.lines * 0.35),            -- высота не более ~35% экрана[web:7]
+    winhighlight = "Normal:Normal,FloatBorder:FloatBorder", -- управление цветами[web:5]
+}
+local on_attach = function(_, bufnr)
+    local map = function(mode, lhs, rhs)
+        vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true })
+    end
+    map('n', 'gd', vim.lsp.buf.definition)
+    map('n', 'K', function() vim.lsp.buf.hover(hover_opts) end)
+    map('n', 'gi', vim.lsp.buf.implementation)
+    map('n', '<Leader>rn', vim.lsp.buf.rename)
+    map('n', '<Leader>ca', vim.lsp.buf.code_action)
+end
+
+local servers = {
+    lua_ls = {
+        settings = {
+            Lua = {
+                diagnostics = { globals = { "vim" } },
+                workspace = { checkThirdParty = false },
+            },
+        },
+    },
+    gopls = {},
+    rust_analyzer = {},
+    pyright = {},
+    ts_ls = {},
+    ruff = {
+        init_options = {
+            settings = {
+                args = {}, -- пример: { "--select", "E,F,I", "--unsafe-fixes" }
+            },
+        },
+    },
+}
+
+for name, cfg in pairs(servers) do
+    local base = {
+        on_attach    = on_attach,
+        settings     = cfg.settings,
+        init_options = cfg.init_options,
+        flags        = { debounce_text_changes = 150 },
+    }
+    vim.lsp.config(name, blink.get_lsp_capabilities(base))
+    vim.lsp.enable(name)
+end

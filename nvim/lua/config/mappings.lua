@@ -13,7 +13,7 @@ vim.keymap.set({ 'n' }, '<Leader>q', '<cmd>q<cr>', opts)
 
 -- features
 -- File manager
-vim.keymap.set({ 'n' }, '<Leader>j', '<cmd>Neotree float<cr>', opts)
+vim.keymap.set({ 'n' }, '<Leader>j', '<cmd>Neotree float toggle reveal_file=%:p<cr>', opts)
 
 vim.keymap.set({ 'n' }, "<Leader>'", '<cmd>TSJToggle<cr>', opts)
 
