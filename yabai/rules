@@ -1,0 +1,19 @@
+# Системные приложения с ограниченным размером окна
+yabai -m rule --add app="Системные настройки" manage=off
+yabai -m rule --add app="App Store" manage=off
+yabai -m rule --add app="Finder" manage=off
+yabai -m rule --add app="Preview" manage=off
+yabai -m rule --add app="Disk Utility" manage=off
+yabai -m rule --add app="Мониторинг системы" manage=off
+
+# Telegram
+yabai -m rule --add app="Telegram" manage=off
+
+yabai -m rule --add app="Alacritty" space=terminal
+yabai -m rule --add app="Safari" space=browser
+yabai -m rule --add app="Telegram" space=tg
+# yabai -m rule --add app="Просмотр" space=docs
+# yabai -m rule --add app="Pages" space=docs
+
+# yabai -m rule --add app="Системные настройки" space=system
+# yabai -m rule --add app="Мониторинг системы" space=system

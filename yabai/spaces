@@ -1,0 +1,5 @@
+yabai -m space 1 --label terminal
+yabai -m space 2 --label browser
+yabai -m space 3 --label tg
+yabai -m space 4 --label docs
+yabai -m space 5 --label system
