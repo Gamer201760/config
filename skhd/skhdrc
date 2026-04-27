@@ -18,7 +18,7 @@ ctrl + alt + cmd - r : yabai --restart-service
 shift + alt - m : yabai -m window --toggle float; yabai -m window --grid 100:100:5:5:90:90
 
 # Переместить окно на следующий экран
-ctrl + alt - k: yabai -m window --display recent && yabai -m display --focus recent 
+# ctrl + alt - k: yabai -m window --display recent && yabai -m display --focus recent 
 
 
 # cmd - j: open -na /Applications/Alacritty.app
