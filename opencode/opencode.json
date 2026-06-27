@@ -1,16 +1,27 @@
 {
     "$schema": "https://opencode.ai/config.json",
     "plugin": [
-        "@franlol/opencode-md-table-formatter",
         "oc-codex-multi-auth"
     ],
-    "server": {
-        "cors": [
-            "https://app.opencode.server.wg",
-            "http://app.opencode.server.wg",
-        ]
+    "mcp": {
+        "context7": {
+            "type": "remote",
+            "url": "https://mcp.context7.com/mcp",
+            "enabled": true,
+            "headers": {
+                "CONTEXT7_API_KEY": "ctx7sk-896824b9-111a-4440-8f1b-7890d9d83447"
+            }
+        },
+        "markitdown": {
+            "type": "local",
+            "command": [
+                "uvx",
+                "markitdown-mcp"
+            ],
+            "enabled": false,
+            "timeout": 180000
+        },
     },
-    "autoupdate": true,
     "default_agent": "system-desing",
     "agent": {
         "plan": {
@@ -35,55 +46,39 @@
         }
     },
     "provider": {
-        "openai": {
+        "omnirouter": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "Omni Router",
             "options": {
-                "reasoningEffort": "medium",
-                "reasoningSummary": "auto",
-                "textVerbosity": "medium",
-                "include": [
-                    "reasoning.encrypted_content"
-                ],
-                "store": false
-            }
-        }
-    },
-    "mcp": {
-        "context7": {
-            "type": "remote",
-            "url": "https://mcp.context7.com/mcp",
-            "enabled": true,
-            "headers": {
-                "CONTEXT7_API_KEY": "ctx7sk-896824b9-111a-4440-8f1b-7890d9d83447"
+                "baseURL": "http://ai.server.wg/v1",
+                "apiKey": "sk-556bcb70411fc0eb-85678e-36a0d1cf"
+            },
+            "models": {
+                "gemini-cli/gemini-3.1-pro-preview": {
+                    "name": "Gemini 3.1 pro"
+                }
             }
         },
-        "chunkhound": {
-            "type": "local",
-            "command": [
-                "chunkhound",
-                "mcp",
-                "."
-            ],
-            "enabled": false,
-            "timeout": 180000
+        "myprovider": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "OMLX Local",
+            "options": {
+                "baseURL": "http://127.0.0.1:8000/v1"
+            },
+            "models": {
+                "supergemma4-26b-uncensored-mlx-4bit-v2": {
+                    "name": "Gemma4 26b 4bit"
+                }
+            }
         },
-        "markitdown": {
-            "type": "local",
-            "command": [
-                "markitdown-mcp"
-            ],
-            "enabled": true,
-            "timeout": 180000
-        },
-        "word-document-server": {
-            "type": "local",
-            "command": [
-                "uvx",
-                "--from",
-                "office-word-mcp-server",
-                "word_mcp_server"
-            ],
-            "enabled": true,
-            "timeout": 180000
+        "anthropic": {
+            "options": {
+                "baseURL": "https://api.vibecode-claude.online/v1",
+                "apiKey": "sk-a74b6e6b3bba13e3f29f534b20128f59020b6787923560bf"
+            },
+            "models": {
+                "claude-opus-4.7": {}
+            }
         }
     }
 }

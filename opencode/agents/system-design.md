@@ -2,8 +2,8 @@
 description: "Primary engineering agent: architecture, PM orchestration, and delegation"
 mode: primary
 temperature: 0.4
-model: openai/gpt-5.5
-reasoningEffort: xhigh
+# model: openai/gpt-5.5
+reasoningEffort: high
 tools:
   "*": true
 permission:

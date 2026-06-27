@@ -7,7 +7,7 @@ Language-specific guidance for Python projects.
 - In conflicts, this file overrides generic agent guidance
 
 ## Style
-- Target Python 3.14+
+- Target Python 3.11+
 - Use type hints on public functions and methods
 - Keep imports at top-level unless framework requires lazy loading
 - Keep modules focused and small

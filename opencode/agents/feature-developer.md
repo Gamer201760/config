@@ -2,8 +2,8 @@
 description: Implements production code from architecture specs 
 mode: subagent
 temperature: 0.2
-model: openai/gpt-5.5
-reasoningEffort: xhigh
+# model: openai/gpt-5.5
+reasoningEffort: high
 tools:
   read: true
   write: true

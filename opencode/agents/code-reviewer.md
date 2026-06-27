@@ -2,8 +2,8 @@
 description: Reviews code for logical issues, security, architecture (no changes)
 mode: subagent
 temperature: 0.2
-model: openai/gpt-5.5
-reasoningEffort: xhigh
+# model: openai/gpt-5.5
+reasoningEffort: high
 tools:
   read: true
   bash: true

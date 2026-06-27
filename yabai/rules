@@ -6,6 +6,9 @@ yabai -m rule --add app="Preview" manage=off
 yabai -m rule --add app="Disk Utility" manage=off
 yabai -m rule --add app="Мониторинг системы" manage=off
 
+yabai -m rule --add app="ChatGPT" manage=off
+yabai -m rule --add app="V2BOX" manage=off
+
 # Telegram
 yabai -m rule --add app="Telegram" manage=off
 
